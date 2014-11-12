@@ -1,0 +1,16 @@
+---
+- name: Copy mysql_maintain to place
+  copy: src=mysqlcheck_cron dest=/usr/local/sbin/mysqlcheck_cron owner=root group=root mode=0755
+
+- name: Set up cron job for mysql_maintenance
+  cron: >
+    name=mysqlcheck
+    cron_file=mysqlcheck
+    hour=2
+    minute=56
+    day=29
+    job='/usr/local/sbin/mysqlcheck_cron'
+    user=root
+
+- name: Copy mysqlcheck logrotate config in place
+  copy: src=mysqlcheck.logrotate dest=/etc/logrotate.d/mysqlcheck mode=0644 owner=root group=root

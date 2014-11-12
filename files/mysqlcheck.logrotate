@@ -1,0 +1,7 @@
+/var/log/mysql/mysqlcheck.log {
+yearly
+rotate 10
+compress
+dateext
+missingok
+}
