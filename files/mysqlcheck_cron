@@ -1,5 +1,4 @@
 #!/bin/sh
 output=$(mysqlcheck --silent --all-databases --optimize)
 echo $output | grep -e '[Ee]rror'
-printf "%b\n" "$output"
-echo $output >> /var/log/mysql/mysqlcheck.log
+printf "%b\n" "$output" >> /var/log/mysql/mysqlcheck.log
